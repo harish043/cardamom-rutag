@@ -102,7 +102,7 @@ def main():
             img = Image.open(image).convert("RGB")
             st.image(img, caption="Uploaded Image", use_column_width=True)
 
-            class_names = sorted([d for d in os.listdir("dataset/train") if os.path.isdir(os.path.join("dataset/train", d))])
+            class_names = ["raw", "partially_dried", "mostly_dried", "fully_dried"]
             model = load_model(len(class_names))
             image_probs = predict_image(img, model)
             image_stage = class_names[np.argmax(image_probs)]
